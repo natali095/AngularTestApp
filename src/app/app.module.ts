@@ -8,6 +8,8 @@ import { QuestionComponent } from './question/question.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeBgDirective } from './change-bg.directive';
+import { ResultComponent } from './result/result.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,17 @@ import { ChangeBgDirective } from './change-bg.directive';
     WelcomeComponent,
     QuestionComponent,
     HeaderComponent,
-    ChangeBgDirective
+    ChangeBgDirective,
+    ResultComponent,
+   
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
