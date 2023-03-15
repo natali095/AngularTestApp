@@ -160,6 +160,25 @@
                 }
             ],
             "explanation": "this.propertyName is the way to access a specific property within a class"
+        },
+        {
+            "questionText": "What is the purpose of a constructor in a class?",
+            "options": [
+                {
+                    "text": "To create a new instance of the class",
+                    "correct": true
+                },
+                {
+                    "text": "To add methods to the class"
+                },
+                {
+                    "text": "To declare properties in the class"
+                },
+                {
+                    "text": "To define the interface for the class"
+                }
+            ],
+            "explanation": "The constructor is used to create a new instance of a class and initialize its properties."
         }
     ]
 }
