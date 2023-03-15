@@ -1,45 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { QuestionService } from '../service/question.service';
 
 
 
 export interface TableEmployee {
   name: string;
   position: number;
-  score: number;
+  points: number;
   rating: number;
 }
 
-const EMPLOYEE_DATA: TableEmployee[] = [
-  {position: 1, name: 'Hydrogen', score: 10, rating: 1},
-  {position: 2, name: 'Helium', score: 20, rating: 2},
-  {position: 3, name: 'Lithium', score: 30, rating: 3},
-  {position: 4, name: 'Beryllium', score: 40, rating: 4},
-  {position: 5, name: 'Boron', score: 20, rating: 5},
-  {position: 6, name: 'Carbon', score: 60, rating: 6},
-  {position: 7, name: 'Nitrogen', score: 80, rating: 7},
-  {position: 8, name: 'Oxygen', score: 90, rating: 8},
-  {position: 9, name: 'Fluorine', score: 60, rating: 9},
-  {position: 10, name: 'Neon', score: 20, rating: 10},
-];
-
-/**
- * @title Styling columns using their auto-generated column names
- */
 
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
-})
-export class ResultComponent {
-  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-score', 'demo-rating'];
-  dataSource = EMPLOYEE_DATA;
+ 
+  // Component configuration here
+  })
+export class ResultComponent implements OnInit {
+  userName: string = " ";
+  points: number = 0;
+  dataSource: TableEmployee[] = [];
+
+  
+  constructor(private questionService: QuestionService) { }
 
 
+  ngOnInit() {
+    this.userName = this.questionService.getUserName();
+  this.points = this.questionService.getPoints();
+  console.log("Points:", this.points);
+    
+    let tempArray: TableEmployee[] = [
+      {position: 1, name: this.userName, points: this.points, rating: 1},
+      {position: 2, name: 'John Dow', points: 50, rating: 3},
+      {position: 3, name: 'Olga Shtern', points: 30, rating: 4},
+      {position: 4, name: 'John Smit', points: 20, rating: 1},
+      {position: 5, name: 'Ivan McGregor', points: 70, rating: 2}
+    ];
+    this.dataSource = tempArray.concat(this.dataSource.slice(0, 8));
+  }
+  
 
+  displayedColumns: string[] = ['position', 'name', 'points', 'rating'];
 
 
 }
-
 

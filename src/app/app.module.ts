@@ -11,6 +11,7 @@ import { ChangeBgDirective } from './change-bg.directive';
 import { ResultComponent } from './result/result.component';
 import { MatTableModule } from '@angular/material/table';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
     HeaderComponent,
     ChangeBgDirective,
     ResultComponent,
+
    
 
   ],

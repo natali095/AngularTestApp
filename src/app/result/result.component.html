@@ -1,30 +1,38 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+<div>
+  <h1>Welcome, {{userName}}!</h1>
+  <p>Here are your rating:</p>
+
+<p>Points: {{ points }}</p>
+
+  <table mat-table [dataSource]="dataSource">
+  
     <!-- Position Column -->
-    <ng-container matColumnDef="demo-position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let employee"> {{employee.position}} </td>
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{element.position}}</td>
     </ng-container>
   
     <!-- Name Column -->
-    <ng-container matColumnDef="demo-name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let employee"> {{employee.name}} </td>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{element.name}}</td>
     </ng-container>
   
-    <!-- Weight Column -->
-    <ng-container matColumnDef="demo-score">
-      <th mat-header-cell *matHeaderCellDef> Score </th>
-      <td mat-cell *matCellDef="let employee"> {{employee.score}} </td>
+    <!-- Score Column -->
+    <ng-container matColumnDef="points">
+      <th mat-header-cell *matHeaderCellDef>Score</th>
+      <td mat-cell *matCellDef="let element">{{element.points}}</td>
     </ng-container>
   
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="demo-rating">
-      <th mat-header-cell *matHeaderCellDef> Rating </th>
-      <td mat-cell *matCellDef="let employee"> {{employee.rating}} </td>
+    <!-- Rating Column -->
+    <ng-container matColumnDef="rating">
+      <th mat-header-cell *matHeaderCellDef>Rating</th>
+      <td mat-cell *matCellDef="let element">{{element.rating}}</td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+</div>
+
   

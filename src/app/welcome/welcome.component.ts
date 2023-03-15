@@ -8,9 +8,19 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 
 export class WelcomeComponent {
   @ViewChild('name') nameKey!: ElementRef;
+  @ViewChild('surename') surenameKey!: ElementRef;
 
   startTest(){
-    localStorage.setItem("name",this.nameKey.nativeElement.value);
-  }
+    
+localStorage.setItem("name", this.nameKey.nativeElement.value);
+  
+localStorage.setItem("surename", this.surenameKey.nativeElement.value);
+  
+ 
 
 }
+  
+    
+  }
+
+

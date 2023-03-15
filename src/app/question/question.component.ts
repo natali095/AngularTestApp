@@ -10,6 +10,7 @@ import { QuestionService } from '../service/question.service';
 export class QuestionComponent implements OnInit {
 
   public name: string = "";
+  public surename: string = "";
   public questionList: any = [];
   public currentQuestion: number = 0;
   public points: number = 0;
@@ -23,7 +24,11 @@ export class QuestionComponent implements OnInit {
   constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
+
     this.name = localStorage.getItem("name")!;
+    this.surename = localStorage.getItem("surename")!;
+    
+
     this.getAllQuestions();
     this.startcounter();
   }
@@ -40,28 +45,26 @@ export class QuestionComponent implements OnInit {
     this.currentQuestion--;
   }
   answer(currentQno: number, option: any) {
-    if(currentQno === this.questionList.length){
-      this.isTestCompleted = true;
-      this.stopCaunter();
-    }
     if (option.correct) {
       this.points += 10;
       this.correctAnswer++;
+    } else {
+      this.points -= 10;
+      this.inCorrectAnswer++;
+    }
+  
+    this.questionService.setPoints(this.points); 
+    console.log(`Current value of this.points: ${this.points}`);
+  
+    if (currentQno === this.questionList.length) {
+      this.isTestCompleted = true;
+      this.stopCaunter();
+    } else {
       setTimeout(() => {
         this.currentQuestion++;
         this.resetCounter();
         this.getProgressPercent();
       }, 1000);
-    
-    } else {
-      setTimeout(() => {
-        this.currentQuestion++;
-        this.inCorrectAnswer++;
-        this.resetCounter();
-        this.getProgressPercent();
-      }, 1000)
-    
-      this.points -= 10;
     }
   }
   startcounter() {
@@ -97,9 +100,16 @@ export class QuestionComponent implements OnInit {
     this.counter = 60;
     this.currentQuestion = 0;
     this.progress = "0";
+    
   }
+  
   getProgressPercent() {
     this.progress = ((this.currentQuestion / this.questionList.length) * 100).toString();
     return this.progress;
+    
   }
+
+
+  
+
 }
